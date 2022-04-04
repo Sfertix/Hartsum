@@ -18,33 +18,6 @@ $users = [
     ],
 ];
 
-$recipes = [
-    [
-        'title' => 'Cassoulet',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Couscous',
-        'recipe' => '',
-        'author' => 'mickael.andrieu@exemple.com',
-        'is_enabled' => false,
-    ],
-    [
-        'title' => 'Escalope milanaise',
-        'recipe' => '',
-        'author' => 'mathieu.nebra@exemple.com',
-        'is_enabled' => true,
-    ],
-    [
-        'title' => 'Salade Romaine',
-        'recipe' => '',
-        'author' => 'laurene.castor@exemple.com',
-        'is_enabled' => false,
-    ],
-];
-
 if(isset($_GET['limit']) && is_numeric($_GET['limit'])) {
     $limit = (int) $_GET['limit'];
 } else {
