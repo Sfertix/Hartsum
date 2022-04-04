@@ -3,7 +3,7 @@
     <head>
        <meta charset="utf-8">
         <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="styles.css" media="screen" type="text/css" />
+        <link rel="stylesheet" href="./css/styles_login.css" media="screen" type="text/css" />
     </head>
     <body>
         <div id="container">
