@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,23 +19,19 @@
     <!-- Navigation -->
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <a href="./">Accueil</a>
+        <a href="#">Partie</a>
     </div>
-    <span onclick="openNav()">Ouvrir</span>
-    
+    <span onclick="openNav()"><img class="navbutton" src="./images/menu.png" width=50px></span>
+
     <!-- Inclusion du formulaire de connexion -->
     <?php include_once('login_verif.php'); ?>
         <h2>Profil utilisateur</h2>
 
-        <!-- Si l'utilisateur existe, on affiche les recettes -->
-        <?php if(isset($loggedUser)): ?>
-            
+        <!-- Si l'utilisateur existe, on affiche les infos -->
+        <?php if(isset($_SESSION['LOGGED_USER'])): ?>
+            <p>Ces informations ne s'affichent qu'après la connexion au serveur.</p>
         <?php endif; ?>
     </div>
-
-    <?php include_once('footer.php'); ?>
 </body>
 </html>

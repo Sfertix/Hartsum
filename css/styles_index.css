@@ -91,6 +91,10 @@ body {
   margin-left: 50px;
 }
 
+.navbutton {
+  margin: 10px 10px 10px 10px;
+}
+
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 #main {
   transition: margin-left .5s;
