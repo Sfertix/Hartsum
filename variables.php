@@ -17,9 +17,3 @@ $users = [
         'age' => 28,
     ],
 ];
-
-if(isset($_GET['limit']) && is_numeric($_GET['limit'])) {
-    $limit = (int) $_GET['limit'];
-} else {
-    $limit = 100;
-}
