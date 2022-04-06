@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       <meta charset="utf-8">
-        <!-- importer le fichier de style -->
-        <link rel="stylesheet" href="./css/styles_login.css" media="screen" type="text/css" />
-    </head>
-    <body>
-        <div id="container">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hartsum</title>
+    <link href="./css/styles_index.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/sidenav.js"></script>
+    <?php
+        include_once('variables.php');
+    ?>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="container">
 
-        <!-- Si utilisateur/trice est non identifié(e), on affiche le formulaire -->
-        
-        <?php if(!isset($loggedUser)): ?>    
-            <form action="./safezone/home.php" method="POST">
+    <!-- Navigation -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+    <span onclick="openNav()">Ouvrir</span>
+    
+    <!-- Inclusion du formulaire de connexion -->
+    <?php include_once('login_verif.php'); ?>
+        <h2>Profil utilisateur</h2>
 
-                <!-- si message d'erreur on l'affiche -->
-                <?php if(isset($errorMessage)) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php echo $errorMessage; ?>
-                    </div>
-                <?php endif; ?>
-                <h1>Connexion</h1>
-                    
-                <div class="mb-3">
-                    <label for="email" class="form-label"><b>Email</b></label>
-                    <input type="text" class="form-control" placeholder="spyrrel@exemple.com" name="email" required>
-                </div>
+        <!-- Si l'utilisateur existe, on affiche les recettes -->
+        <?php if(isset($loggedUser)): ?>
+            
+        <?php endif; ?>
+    </div>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label"><b>Mot de passe</b></label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
-                </div>
-
-                    <input type="submit" id='submit' value='SE CONNECTER' >
-            </form>
-            <!-- 
-            Si utilisateur/trice bien connectée on affiche un message de succès
-            -->
-            <?php else: ?>
-                <div class="alert alert-success" role="alert">
-                    Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
-                </div>
-            <?php endif; ?>
-        </div>
-    </body>
-</html>   
+    <?php include_once('footer.php'); ?>
+</body>
+</html>
