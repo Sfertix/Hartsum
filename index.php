@@ -9,9 +9,7 @@
     <title>Hartsum</title>
     <link href="./css/styles_index.css" rel="stylesheet">
     <script type="text/javascript" src="./js/sidenav.js"></script>
-    <?php
-        include_once('variables.php');
-    ?>
+    
 </head>
 <body class="d-flex flex-column min-vh-100">
     <div class="container">
@@ -31,6 +29,7 @@
         <!-- Si l'utilisateur existe, on affiche les infos -->
         <?php if(isset($_SESSION['LOGGED_USER'])): ?>
             <p>Ces informations ne s'affichent qu'après la connexion au serveur.</p>
+            <p> Vous êtes : <?php echo $_SESSION['LOGGED_USER'] ?> (#<?php echo $_SESSION['USER_ID'] ?>)</p>
         <?php endif; ?>
     </div>
 </body>

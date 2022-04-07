@@ -1,25 +1,42 @@
 <?php
 
 // Validation du formulaire
-if (isset($_POST['email']) &&  isset($_POST['password'])) {
+if (isset($_POST['pseudo']) &&  isset($_POST['password'])) {
+    
+    $servername = "localhost"; $db_name = "hartsum"; $db_user = "root";
 
-    foreach ($users as $user) {
+    try {
+        $dbco = new PDO("mysql:host=$servername;dbname=$db_name", $db_user);
+        $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+        $username = $_POST['pseudo'];
+        $password = $_POST['password'];
+        
+        $sth = $dbco->prepare("SELECT id, username, pswd FROM users WHERE username=:username");
+        $sth->bindParam(':username',$username);
+        $sth->execute();
+
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
+        
         if (
-            $user['email'] === $_POST['email'] &&
-            $user['password'] === $_POST['password']
+            $username === $resultat[0]['username'] &&
+            $password === $resultat[0]['pswd']
         ) {
-            
-            // COOKIE
-            $_SESSION['LOGGED_USER'] = $user['full_name'];
-        
+            // Cookie
+            $_SESSION['LOGGED_USER'] = $resultat[0]['username'];
+            $_SESSION['USER_ID'] = $resultat[0]['id'];
         }
-        
+
         else {
             $errorMessage = sprintf('Les informations fournies ne correspondent pas pour %s',
-                $_POST['email']
-            );
+            $_POST['pseudo']);
         }
     }
+
+    catch(PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+    
 }
 ?>
 
@@ -35,9 +52,8 @@ if (isset($_POST['email']) &&  isset($_POST['password'])) {
         </div>
     <?php endif; ?>
     <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="email-help" placeholder="you@exemple.com">
-        <div id="email-help" class="form-text">L'email utilisé lors de la création de compte.</div>
+        <label for="pseudo" class="form-label">Pseudp</label>
+        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Spyrrel">
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Mot de passe</label>

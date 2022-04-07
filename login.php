@@ -22,8 +22,8 @@
                 <h1>Connexion</h1>
                     
                 <div class="mb-3">
-                    <label for="email" class="form-label"><b>Email</b></label>
-                    <input type="text" class="form-control" placeholder="spyrrel@exemple.com" name="email" required>
+                    <label for="pseudo" class="form-label"><b>Pseudo</b></label>
+                    <input type="text" class="form-control" placeholder="spyrrel@exemple.com" name="pseudo" required>
                 </div>
 
                 <div class="mb-3">
@@ -38,7 +38,7 @@
             -->
             <?php else: ?>
                 <div class="alert alert-success" role="alert">
-                    Bonjour <?php echo $loggedUser['email']; ?> et bienvenue sur le site !
+                    Bonjour <?php echo $loggedUser['pseudo']; ?> et bienvenue sur le site !
                 </div>
             <?php endif; ?>
         </div>

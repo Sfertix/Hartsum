@@ -48,3 +48,22 @@ input[type=submit]:hover {
     color: #ffb41e;
     border: 1px solid #ffb41e;
 }
+
+.bad_request {
+    padding: 20px;
+    background-color: #f44336;
+    color: whitesmoke;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
