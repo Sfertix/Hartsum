@@ -23,7 +23,7 @@
                     
                 <div class="mb-3">
                     <label for="pseudo" class="form-label"><b>Pseudo</b></label>
-                    <input type="text" class="form-control" placeholder="spyrrel@exemple.com" name="pseudo" required>
+                    <input type="text" class="form-control" placeholder="Exemple : Spyprrel" name="pseudo" required>
                 </div>
 
                 <div class="mb-3">
