@@ -18,13 +18,22 @@ if (isset($_POST['pseudo']) &&  isset($_POST['password'])) {
 
         $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);
         
-        if (
-            $username === $resultat[0]['username'] &&
-            $password === $resultat[0]['pswd']
-        ) {
-            // Cookie
-            $_SESSION['LOGGED_USER'] = $resultat[0]['username'];
-            $_SESSION['USER_ID'] = $resultat[0]['id'];
+        if (isset($resultat[0])) {
+            if (
+                $username === $resultat[0]['username'] &&
+                $password === $resultat[0]['pswd']
+            ) {
+                // Cookie
+                $_SESSION['LOGGED_USER'] = $resultat[0]['username'];
+                $_SESSION['USER_ID'] = $resultat[0]['id'];
+            }
+    
+            else {
+                $errorMessage = sprintf('Les informations fournies ne correspondent pas pour %s',
+                $_POST['pseudo']);
+            }
+
+            
         }
 
         else {
@@ -32,7 +41,7 @@ if (isset($_POST['pseudo']) &&  isset($_POST['password'])) {
             $_POST['pseudo']);
         }
     }
-
+    
     catch(PDOException $e) {
         echo "Erreur : " . $e->getMessage();
     }
